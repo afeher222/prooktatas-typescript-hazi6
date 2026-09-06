@@ -21,7 +21,7 @@ export class TodoItem<T extends TodoType> {
         }
     }
 
-    private isTaskWithDate() : this is TodoItem<TaskWithDate> {
+    public isTaskWithDate() : this is TodoItem<TaskWithDate> {
         if (typeof this.content === "object" && this.content != null && "dueDate" in this.content){
             return true;
         }

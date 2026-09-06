@@ -1,5 +1,6 @@
 import { TodoItem } from "./models/TodoItem";
-import { Task, TaskWithDate } from "./utils/TodoType";
+import { TodoList } from "./services/TodoList";
+import { Task, TaskWithDate, TodoType } from "./utils/TodoType";
 
 let todo1 = new TodoItem<Task>(1, "bevásárlás");
 let todo2 = new TodoItem<TaskWithDate>(2, {message: "házi feladat", 
@@ -11,8 +12,23 @@ let todo5 = new TodoItem<Task>(5, "főzés");
 
 let todos = [todo1, todo2, todo3, todo4, todo5]
 
+
+let myTodos = new TodoList<TodoType>();
 for (let todo of todos){
-    console.log(todo.toString());
+    myTodos.addItem(todo);
 }
 
+console.log("Összes feladat:");
+myTodos.listItems();
 
+console.log("Törlés");
+myTodos.deleteItemById(3);
+
+console.log("Összes feladat:");
+myTodos.listItems();
+
+console.log('Határidős feladatok:');
+myTodos.listItemsWithDate(true);
+
+console.log('Határidő nélküli feladatok:');
+myTodos.listItemsWithDate(false);
