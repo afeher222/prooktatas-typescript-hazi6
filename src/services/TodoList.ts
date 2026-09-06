@@ -39,18 +39,6 @@ export class TodoList<T extends TodoType>{
     
 }
 
-/*
-function Logger(text: string) {    
-    function wrapper(target: any, context: ClassMethodDecoratorContext) {
-        function decorator(this: any, ...args: any[]){
-            console.log(text);
-            return target.apply(this, args);
-        }
-        return decorator;
-    };
-    return wrapper;
-}
-*/
 
 function LogMethod(text: string){
     return function (target: any, propertyName: string, propertyDesciptor: PropertyDescriptor) {
